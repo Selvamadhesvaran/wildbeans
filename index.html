@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('bg1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        .login-container {
+            position: relative;
+            background: transparent;
+            padding: 50px;
+            border-radius: 15px;
+            text-align: center;
+            border: transparent;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .login-container h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .login-container p {
+            color: #f1f1f1;
+            font-size: 18px;
+        }
+
+        .btn-custom {
+            width: 240px;
+            height: 220px;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            margin: 15px;
+            border-radius: 12px;
+            border: 2px solid black;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-custom:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-primary {
+            background-image: url('inch1.jpg');
+            
+           
+        }
+
+        .btn-success {
+            background-image: url('customer.jpg');
+            
+        }
+
+        .side-button {
+            position: fixed;
+            top: 10%;
+            right: 0;
+            width: 150px;
+            height: 200px;
+            background: url('alcohol free.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: last baseline;
+            justify-content: flex-end;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 15px;
+            padding-right: 20px;
+        }
+
+        .side-button h2 {
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+            background:red;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .side-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Wild Bean Welcomes You ☕</h2>
+        <p>Please choose your login</p>
+        
+        <a href="incharge.html" class="btn btn-primary btn-custom">
+            <i class="fas fa-user-tie"></i> Incharge Login
+        </a>
+
+        <a href="customerLogin.html" class="btn btn-success btn-custom">
+            <i class="fas fa-coffee"></i> Customer Login
+        </a>
+    </div>
+
+    <div class="side-button" onclick="alert('This is an Alcohol-Free Zone!')">
+        <h2>Alcohol Free Zone</h2>
+    </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login - Coffee Delight</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('coffe2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .product-container {
+            text-align: center;
+            width: 200px;
+        }
+
+        .product-card {
+            width: 200px;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .order-btn {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            font-size: 16px;
+            background: #ff9800;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .order-btn:hover {
+            background: #e68900;
+            transform: scale(1.1);
+        }
+
+        /* Side Button Styling */
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Your Favorite Coffee ☕</h2>
+        <div class="product-grid">
+            <div class="product-container">
+                <div class="product-card" onclick="location.href='order.html?product=Chocolate coffee'" style="background-image: url('chocolate\ coffee.jpg');"></div>
+                <div class="product-name">Chocolate Coffee</div>
+                <a href="order.html?product=chocolate coffee" class="order-btn">$120</a>
+            </div>
+            <div class="product-container">
+                <div class="product-card" onclick="location.href='order.html?product=cappuccino'" style="background-image: url('cappuccino.jpg');"></div>
+                <div class="product-name">Cappuccino</div>
+                <a href="order.html?product=cappuccino" class="order-btn">₹150</a>
+            </div>
+            <div class="product-container">
+                <div class="product-card" onclick="location.href='order.html?product=latte'" style="background-image: url('latte.jpg');"></div>
+                <div class="product-name">Latte</div>
+                <a href="order.html?product=latte" class="order-btn">₹140</a>
+            </div>
+            <div class="product-container">
+                <div class="product-card" onclick="location.href='order.html?product=mocha'" style="background-image: url('mocha.jpg');"></div>
+                <div class="product-name">Mocha</div>
+                <a href="order.html?product=mocha" class="order-btn">₹160</a>
+            </div>
+            <div class="product-container">
+                <div class="product-card" onclick="location.href='order.html?product=blackcoffee'" style="background-image: url('blackcoffee.jpg');"></div>
+                <div class="product-name">Black Coffee</div>
+                <a href="order.html?product=blackcoffee" class="order-btn">$100</a>
+            </div>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

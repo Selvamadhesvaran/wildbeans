@@ -1,0 +1,12 @@
+app.get("/api/orders", (req, res) => {
+    db.query("SELECT * FROM orders order BY order_time DESC", (err, results) => {
+        if (err) {
+            console.error("❌ MySQL Fetch Error:", err.sqlMessage);
+            return res.status(500).json({ message: `⚠️ Cannot retrieve orders. MySQL Error: ${err.sqlMessage}` });
+        }
+        res.json(results);
+    });
+});
+
+
+

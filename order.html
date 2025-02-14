@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - Coffee Delight</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('coffee-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            font-weight: bold;
+            font-style: italic;
+            text-align: center;
+            margin-top: 50px;
+            background: transparent;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .selected-product {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .payment-options {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .payment-btn {
+            padding: 10px 15px;
+            font-size: 18px;
+            background: #ff9800;
+            color: black;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .payment-btn:hover {
+            transform: scale(1.1);
+        }
+        .customer-name {
+            margin: 20px 0;
+        }
+        .upi-btn:hover{
+             background: url('upi3.jpg') ;
+             width: 156px;
+             height: 250px;
+        }
+        .Cash-btn:hover{
+             background: url('cash3.jpg') ;
+             width: 250px;
+             height: 250px;
+             transform: scale(1.1);
+             
+        }
+        .Cash-btn:hover::after{
+            content: "ah cho chuweet";
+            color: darkmagenta;
+            font-size: 15px;
+        }
+    </style>
+    <script>
+        async function submitOrder(paymentMethod) {
+    const name = document.getElementById("customer-name").value.trim();
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get("product");
+
+    if (!name) {
+        alert("⚠️ Please enter your name before proceeding.");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:5000/api/orders", {  // Ensure this matches your backend route
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, product, payment_method })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert(`✅ Order placed successfully!\n\nOrder Details:\nName: ${name}\nProduct: ${product}\nPayment: ${paymentMethod}`);
+            window.location.href = "Payment-success.html";  // Redirect after successful order
+        } else {
+            alert(`❌ Error: ${data.message}`);
+        }
+    } catch (error) {
+        console.error("❌ Server Error:", error);
+        alert("⚠️ Unable to process your order at the moment. Please try again.");
+    }
+}
+
+
+    </script>
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Complete Your Order</h2>
+        <div class="selected-product" id="selected-product"></div>
+        <div class="customer-name">
+            <label for="customer-name">Enter Your Name:</label>
+            <input type="text" id="customer-name" class="form-control" placeholder="Your Name">
+        </div>
+        <h4>Select Payment Method</h4>
+        <div class="payment-options">
+            <button class="payment-btn upi-btn" onclick="submitOrder('UPI')">UPI</button>
+<button class="payment-btn Cash-btn" onclick="submitOrder('Cash')">Cash</button>
+
+ </div>
+    </div>
+</body>
+</html>
+ 

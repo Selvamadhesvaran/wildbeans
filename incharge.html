@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incharge Dashboard - Coffee Orders</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('coffee-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            background: white;
+            color: black;
+        }
+        .error-message {
+            text-align: center;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">Orders Dashboard</h2>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Product</th>
+                <th>Payment Method</th>
+                <th>Order Time</th>
+            </tr>
+        </thead>
+        <tbody id="order-list">
+            <tr><td colspan="5" class="text-center">Loading orders...</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+   async function fetchOrders() {
+    try {
+        const response = await fetch("http://localhost:5000/api/orders");
+
+        if (!response.ok) {
+            throw new Error(`⚠️ Server Error! Status: ${response.status}`);
+        }
+
+        const orders = await response.json();
+        const orderList = document.getElementById("order-list");
+
+        if (orders.length === 0) {
+            orderList.innerHTML = `<tr><td colspan="5" class="text-center">No orders found</td></tr>`;
+            return;
+        }
+
+        orderList.innerHTML = orders.map(order => `
+            <tr>
+                <td>${order.id}</td>
+                <td>${order.name}</td>
+                <td>${order.product}</td>
+                <td>${order.payment_method}</td>
+                <td>${new Date(order.order_time).toLocaleString()}</td>
+            </tr>
+        `).join('');
+    } catch (error) {
+        document.getElementById("orders-list").innerHTML = `
+            <tr><td colspan="5" class="text-center text-danger">${error.message}</td></tr>
+        `;
+    }
+}
+
+
+// Fetch orders when the page loads
+fetchOrders();
+</script>
+
+</body>
+</html>
